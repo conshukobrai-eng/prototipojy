@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Brisa Solar</title>
+<meta name="description" content="Protótipo de site de energia solar por assinatura, com simulador de economia, planos, FAQ e captura de leads.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Mono:wght@400;500&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17l-6.1 3.4 1.5-6.8L2.2 9l6.9-.7z"/></symbol>
+  <symbol id="check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<div class="promo">
+  <div class="wrap">
+    <span>Neste mês: <b>taxa de ativação zerada</b> para quem assinar até o dia 31.</span>
+    <a href="#contato">Ver condições</a>
+  </div>
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#topo" aria-label="Brisa Solar, início">
+      <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true">
+        <circle cx="16" cy="19" r="7" fill="var(--accent)"/>
+        <g stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <path d="M16 4v4M5.5 10l2.8 2.8M26.5 10l-2.8 2.8M2.5 21h3.5M26 21h3.5"/>
+        </g>
+        <path d="M2 28.5h28" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      Brisa Solar
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#beneficios">Benefícios</a>
+      <a href="#como">Como funciona</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#planos">Planos</a>
+      <a href="#faq">Dúvidas</a>
+    </nav>
+    <div class="top-actions">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Alternar entre tema claro e escuro">
+        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg>
+      </button>
+      <a class="btn btn-primary btn-sm" href="#simulador">Simular economia</a>
+    </div>
+  </div>
+</header>
+
+<main id="topo">
+  <section class="hero">
+    <svg class="hero-arc" viewBox="0 0 720 720" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+      <circle cx="360" cy="360" r="120"/><circle cx="360" cy="360" r="200"/><circle cx="360" cy="360" r="280"/><circle cx="360" cy="360" r="358"/>
+    </svg>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Energia solar por assinatura</span>
+        <h1>Pague <mark>até 20% menos</mark> na conta de luz, sem instalar nada.</h1>
+        <p class="lead">A Brisa Solar gera a energia em usinas parceiras e o desconto aparece direto na fatura da sua distribuidora. Sem obra, sem painel no telhado e sem taxa de adesão.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#simulador">Simular minha economia</a>
+          <a class="btn btn-ghost" href="#como">Ver como funciona</a>
+        </div>
+        <ul class="checks">
+          <li><svg width="18" height="18"><use href="#check"/></svg>Contrato 100% digital</li>
+          <li><svg width="18" height="18"><use href="#check"/></svg>Sem obra e sem painel</li>
+          <li><svg width="18" height="18"><use href="#check"/></svg>Ativação em até 7 dias</li>
+        </ul>
+        <div class="rating">
+          <span class="stars" aria-hidden="true"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
+          <span><b style="color:var(--ink)">4,9 de 5</b> em 2.314 avaliações (dado de exemplo)</span>
+        </div>
+      </div>
+
+      <div class="sim" id="simulador" aria-labelledby="simTitle">
+        <span class="eyebrow" id="simTitle">Simulador de economia</span>
+        <div>
+          <label class="q" for="bill">Quanto você paga de luz por mês?</label>
+          <div class="sim-value"><span class="big" id="billOut">R$ 480</span><span class="unit">/ mês</span></div>
+        </div>
+        <div>
+          <input type="range" id="bill" min="150" max="3000" step="10" value="480" aria-describedby="billScale">
+          <div class="range-scale" id="billScale"><span>R$ 150</span><span>R$ 3.000</span></div>
+        </div>
+        <div>
+          <div class="q" style="font-weight:600;margin-bottom:.5rem" id="tipoLbl">Onde será usada?</div>
+          <div class="seg" role="radiogroup" aria-labelledby="tipoLbl">
+            <input type="radio" name="tipo" id="t1" value="casa" checked><label for="t1">Casa</label>
+            <input type="radio" name="tipo" id="t2" value="comercio"><label for="t2">Comércio</label>
+            <input type="radio" name="tipo" id="t3" value="condominio"><label for="t3">Condomínio</label>
+          </div>
+        </div>
+        <div class="result" aria-live="polite">
+          <div class="result-row">
+            <div><div class="unit">Você economiza</div><div class="big save" id="saveMonth">R$ 58</div><div class="unit">por mês</div></div>
+            <div><div class="unit">Em 12 meses</div><div class="big" id="saveYear">R$ 691</div><div class="unit">no bolso</div></div>
+          </div>
+          <div class="split" aria-hidden="true"><i class="paid" id="barPaid" style="width:88%"></i><i class="saved" id="barSaved" style="width:12%"></i></div>
+          <div class="legend"><span id="legPaid">Você paga R$ 422</span><span id="legPct">Desconto de 12%</span></div>
+        </div>
+        <a class="btn btn-primary btn-block" href="#contato">Quero essa economia</a>
+        <p class="fine">Simulação ilustrativa com contrato anual. O desconto real depende da distribuidora e do consumo medido em kWh.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="press">
+    <div class="wrap">
+      <span class="eyebrow">Reconhecida por</span>
+      <ul>
+        <li>Revista Prumo</li>
+        <li>Núcleo Verde</li>
+        <li>Pauta Energia</li>
+        <li>Selo Origem</li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="section" id="beneficios">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Por que assinar</span>
+        <h2>Menos custo na fatura, nenhuma obra na sua rotina.</h2>
+        <p>Você continua sendo cliente da sua distribuidora. A diferença é que parte da energia que você consome vem de uma usina solar e chega como crédito na sua conta.</p>
+      </div>
+      <div class="benefits">
+        <div class="benefit">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></div>
+          <h3>Desconto todo mês</h3>
+          <p>O abatimento aparece na fatura de luz e o valor fica claro antes de você assinar, em reais e em kWh.</p>
+        </div>
+        <div class="benefit">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 11l9-8 9 8v10H3z"/></svg></div>
+          <h3>Sem obra e sem painel</h3>
+          <p>Nada de instalar equipamento, pedir laudo de telhado ou aguardar técnico. Funciona para casa, loja e condomínio.</p>
+        </div>
+        <div class="benefit">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg></div>
+          <h3>Cancelamento simples</h3>
+          <p>No plano mensal você sai quando quiser, sem multa. No anual, o desconto é maior em troca de 12 meses de contrato.</p>
+        </div>
+        <div class="benefit">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-14 15-14 0 10-6 15-14 15M5 19l7-7"/></svg></div>
+          <h3>Energia limpa certificada</h3>
+          <p>Cada kWh creditado vem de geração solar. Você recebe um relatório mensal com a energia gerada em seu nome.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section deep" id="como">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Como funciona</span>
+        <h2>Da fatura ao desconto em três passos.</h2>
+        <p>Usamos o modelo de geração distribuída: a usina injeta energia na rede e a distribuidora abate os créditos na sua conta.</p>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <span class="n">PASSO 1</span>
+          <h3>Envie sua fatura</h3>
+          <p>Mandamos uma foto da conta. Lemos o consumo em kWh e a distribuidora para calcular o desconto exato.</p>
+          <span class="time">5 minutos</span>
+        </li>
+        <li class="step">
+          <span class="n">PASSO 2</span>
+          <h3>Assine o contrato digital</h3>
+          <p>Você escolhe o plano e assina pelo celular. Vinculamos sua unidade consumidora a uma usina parceira.</p>
+          <span class="time">até 7 dias</span>
+        </li>
+        <li class="step">
+          <span class="n">PASSO 3</span>
+          <h3>Receba o desconto</h3>
+          <p>Os créditos entram na fatura da distribuidora. Você paga a diferença para ela e a assinatura para nós.</p>
+          <span class="time">a partir do mês seguinte</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="resultados">
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat"><b>38 mil</b><span>lares e negócios atendidos</span></div>
+        <div class="stat"><b>R$ 61 mi</b><span>economizados pelos clientes</span></div>
+        <div class="stat"><b>92%</b><span>indicariam para um amigo</span></div>
+        <div class="stat"><b>0</b><span>obras e painéis instalados</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap case">
+      <div class="case-copy">
+        <span class="eyebrow">Exemplo de resultado</span>
+        <h2>Uma padaria que cortou R$ 4.416 por ano na conta de luz.</h2>
+        <p>Com fornos e câmaras frias ligados o dia todo, o consumo mensal passava de 2.000 kWh. Com o plano Comércio anual, a fatura caiu 20% já no segundo mês.</p>
+        <a class="btn btn-ghost" href="#planos" style="align-self:flex-start">Ver planos</a>
+      </div>
+      <div class="bars" role="img" aria-label="Comparação: fatura de R$ 1.840 antes e R$ 1.472 depois da assinatura">
+        <div class="bar-row">
+          <div class="bar-top"><span>Antes</span><b>R$ 1.840 / mês</b></div>
+          <div class="bar"><i class="before"></i></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-top"><span>Depois</span><b>R$ 1.472 / mês</b></div>
+          <div class="bar"><i class="after"></i></div>
+        </div>
+        <div class="bars-foot">
+          <span class="unit">Economia de R$ 368 por mês</span>
+          <span class="big" style="font-size:1.8rem">−20%</span>
+        </div>
+        <p class="fine">Caso ilustrativo criado para este protótipo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag">Depoimentos de exemplo</span>
+        <h2>Quem assina costuma falar do mesmo ponto: a conta ficou previsível.</h2>
+      </div>
+      <div class="quotes">
+        <figure class="quote">
+          <blockquote style="margin:0"><p>Assinei numa tarde, mandei a foto da fatura e no mês seguinte já vi o abatimento. Não precisei falar com ninguém da obra.</p></blockquote>
+          <figcaption class="who"><span class="avatar">MT</span><span><b>Marina T.</b><span>Casa, plano anual</span></span></figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote style="margin:0"><p>Na loja o ar-condicionado pesava no fim do mês. Hoje sei quanto vou pagar de luz antes de abrir o boleto.</p></blockquote>
+          <figcaption class="who"><span class="avatar">RS</span><span><b>Ricardo S.</b><span>Comércio, plano anual</span></span></figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote style="margin:0"><p>No condomínio levamos a proposta para assembleia com a simulação impressa. Aprovamos na mesma reunião.</p></blockquote>
+          <figcaption class="who"><span class="avatar">AL</span><span><b>Ana L.</b><span>Síndica, condomínio</span></span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="planos" style="padding-top:0">
+    <div class="wrap">
+      <div class="plans-top">
+        <div class="section-head">
+          <span class="eyebrow">Planos</span>
+          <h2>Escolha o desconto pelo tamanho da sua conta.</h2>
+          <p>Sem taxa de adesão em nenhum plano. O contrato anual garante dois pontos extras de desconto.</p>
+        </div>
+        <div class="seg" role="radiogroup" aria-label="Periodicidade do contrato" style="min-width:min(100%,280px)">
+          <input type="radio" name="ciclo" id="c1" value="mensal"><label for="c1">Mensal</label>
+          <input type="radio" name="ciclo" id="c2" value="anual" checked><label for="c2">Anual · +2 pontos</label>
+        </div>
+      </div>
+      <div class="plans">
+        <article class="plan">
+          <h3>Casa</h3>
+          <p class="for">Para fatura de até R$ 600 por mês.</p>
+          <div class="pct"><b data-plan="casa">12%</b><span>de desconto na conta de luz</span></div>
+          <ul>
+            <li><svg width="18" height="18"><use href="#check"/></svg>Contrato digital</li>
+            <li><svg width="18" height="18"><use href="#check"/></svg>Relatório mensal de geração</li>
+            <li><svg width="18" height="18"><use href="#check"/></svg>Atendimento por WhatsApp</li>
+          </ul>
+          <div class="fid" data-fid>Contrato de 12 meses</div>
+          <a class="btn btn-ghost" href="#contato">Quero o plano Casa</a>
+        </article>
+        <article class="plan featured">
+          <span class="badge">Mais escolhido</span>
+          <h3>Comércio</h3>
+          <p class="for">Para lojas, clínicas e escritórios até R$ 3.000.</p>
+          <div class="pct"><b data-plan="comercio">17%</b><span>de desconto na conta de luz</span></div>
+          <ul>
+            <li><svg width="18" height="18"><use href="#check"/></svg>Tudo do plano Casa</li>
+            <li><svg width="18" height="18"><use href="#check"/></svg>Gestor de conta dedicado</li>
+            <li><svg width="18" height="18"><use href="#check"/></svg>Nota fiscal mensal para a empresa</li>
+          </ul>
+          <div class="fid" data-fid>Contrato de 12 meses</div>
+          <a class="btn btn-primary" href="#contato">Quero o plano Comércio</a>
+        </article>
+        <article class="plan">
+          <h3>Condomínio</h3>
+          <p class="for">Para áreas comuns acima de R$ 3.000.</p>
+          <div class="pct"><b data-plan="condominio">20%</b><span>de desconto na conta de luz</span></div>
+          <ul>
+            <li><svg width="18" height="18"><use href="#check"/></svg>Tudo do plano Comércio</li>
+            <li><svg width="18" height="18"><use href="#check"/></svg>Proposta pronta para assembleia</li>
+            <li><svg width="18" height="18"><use href="#check"/></svg>Prestação de contas aos condôminos</li>
+          </ul>
+          <div class="fid" data-fid>Contrato de 12 meses</div>
+          <a class="btn btn-ghost" href="#contato">Quero o plano Condomínio</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Dúvidas frequentes</span>
+        <h2>O que costumam perguntar antes de assinar.</h2>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>Preciso instalar painéis solares?</summary>
+          <p>Não. A energia é gerada em usinas parceiras e injetada na rede. Você recebe os créditos na fatura da sua distribuidora, sem obra e sem equipamento na sua unidade.</p>
+        </details>
+        <details>
+          <summary>Vou receber duas contas?</summary>
+          <p>Sim. A distribuidora continua cobrando a energia que sobra e as taxas de rede, já com os créditos abatidos. A Brisa Solar cobra a assinatura, que é menor que o valor abatido.</p>
+        </details>
+        <details>
+          <summary>Como o desconto é calculado?</summary>
+          <p>Usamos o consumo em kWh da sua fatura e a tarifa da sua distribuidora. O percentual do plano incide sobre a energia compensada, e você vê o cálculo completo antes de assinar.</p>
+        </details>
+        <details>
+          <summary>A bandeira tarifária muda o meu desconto?</summary>
+          <p>A bandeira altera o preço do kWh cobrado pela distribuidora. O percentual de desconto do seu plano continua o mesmo, então a economia em reais acompanha a tarifa.</p>
+        </details>
+        <details>
+          <summary>Posso cancelar?</summary>
+          <p>No plano mensal, sim, a qualquer momento e sem multa. No plano anual, o cancelamento antes dos 12 meses segue as condições do contrato.</p>
+        </details>
+        <details>
+          <summary>Minha distribuidora é atendida?</summary>
+          <p>Informe seu CEP e o valor da conta no formulário. Confirmamos em até um dia útil se há usina disponível para a sua distribuidora.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section deep" id="contato">
+    <div class="wrap contact">
+      <div class="contact-copy">
+        <span class="eyebrow">Fale com a gente</span>
+        <h2>Descubra em 2 minutos quanto a sua conta pode cair.</h2>
+        <p>Deixe seus dados e receba a simulação com o valor exato, calculado sobre a sua fatura.</p>
+        <ul class="checks">
+          <li><svg width="18" height="18"><use href="#check"/></svg>Resposta em até 1 dia útil</li>
+          <li><svg width="18" height="18"><use href="#check"/></svg>Sem compromisso e sem taxa</li>
+          <li><svg width="18" height="18"><use href="#check"/></svg>Seus dados só são usados para a simulação</li>
+        </ul>
+      </div>
+      <form class="form" id="leadForm" novalidate>
+        <div class="field">
+          <label for="nome">Nome</label>
+          <input id="nome" name="nome" type="text" autocomplete="name" placeholder="Como podemos te chamar?" required>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="zap">WhatsApp</label>
+            <input id="zap" name="zap" type="tel" autocomplete="tel" inputmode="tel" placeholder="(00) 00000-0000" required>
+          </div>
+          <div class="field">
+            <label for="valor">Valor da conta (R$)</label>
+            <input id="valor" name="valor" type="number" inputmode="numeric" min="50" step="10" placeholder="480" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="perfil">Onde será usada?</label>
+          <select id="perfil" name="perfil">
+            <option>Casa</option>
+            <option>Comércio</option>
+            <option>Condomínio</option>
+          </select>
+        </div>
+        <label class="consent" for="lgpd">
+          <input type="checkbox" id="lgpd" name="lgpd" required>
+          <span>Concordo em receber contato da Brisa Solar sobre esta simulação, conforme a Política de Privacidade (LGPD).</span>
+        </label>
+        <button class="btn btn-primary btn-block" type="submit">Receber minha simulação</button>
+        <p class="status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#topo">
+          <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="19" r="7" fill="var(--accent)"/><g stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M16 4v4M5.5 10l2.8 2.8M26.5 10l-2.8 2.8M2.5 21h3.5M26 21h3.5"/></g><path d="M2 28.5h28" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+          Brisa Solar
+        </a>
+        <p class="fine" style="margin-top:.9rem;max-width:36ch">Energia solar por assinatura para casas, comércios e condomínios.</p>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#beneficios">Benefícios</a></li>
+          <li><a href="#como">Como funciona</a></li>
+          <li><a href="#planos">Planos</a></li>
+          <li><a href="#faq">Dúvidas</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li>contato@brisasolar.exemplo</li>
+          <li>(00) 0000-0000</li>
+          <li>Seg a sex, 8h às 18h</li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>Brisa Solar Energia Ltda · CNPJ 00.000.000/0001-00 · Política de Privacidade · Termos de Uso</span>
+      <span>Protótipo de site. Empresa, números, avaliações e depoimentos são fictícios e servem apenas como exemplo de layout.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="btn btn-primary fab" href="#contato">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>
+  Falar com consultor
+</a>
+
+<div class="cookie" id="cookie" role="region" aria-label="Aviso de cookies">
+  <p>Usamos cookies para medir o desempenho do site e melhorar sua experiência. Você pode aceitar tudo ou manter só os essenciais.</p>
+  <div>
+    <button class="btn btn-primary btn-sm" type="button" data-cookie="all">Aceitar</button>
+    <button class="btn btn-ghost btn-sm" type="button" data-cookie="essential">Só essenciais</button>
+  </div>
+</div>
+
+<script src="script.js" defer></script>
+</body>
+</html>
